@@ -4,7 +4,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-test-key'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+
 
 # -----------------------------
 # التطبيقات
@@ -111,4 +112,5 @@ JAZZMIN_UI_TWEAKS = {
     "theme": "darkly",
     "navbar": "navbar-dark navbar-primary",
     "sidebar": "sidebar-dark-primary",
+
 }
