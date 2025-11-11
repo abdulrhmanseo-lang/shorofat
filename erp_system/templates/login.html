@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>شرفات للاستثمار | دخول المستثمر</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Tajawal", sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #061d3c, #050a16);
+      color: white;
+    }
+
+    /* خلفية متحركة بألوان متدرجة */
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, #061d3c, #0a2a56, #29b6f6, #061d3c);
+      background-size: 300% 300%;
+      animation: gradientMove 12s ease infinite;
+      z-index: -2;
+    }
+
+    /* تأثير النجوم المتحركة */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      animation: twinkle 8s linear infinite;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.4; }
+      100% { opacity: 0.2; }
+    }
+
+    .login-container {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      border-radius: 18px;
+      padding: 40px;
+      width: 400px;
+      text-align: center;
+      z-index: 5;
+    }
+
+    .login-container h2 {
+      color: #29b6f6;
+      font-size: 1.9rem;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    input::placeholder {
+      color: #ccc;
+    }
+
+    button {
+      background: #29b6f6;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #1f9ed6;
+      transform: scale(1.03);
+    }
+
+    .register-link {
+      margin-top: 15px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    .register-link a {
+      color: #29b6f6;
+      text-decoration: none;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <h2>شرفات للاستثمار</h2>
+    <form method="post">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="اسم المستخدم" required>
+      <input type="password" name="password" placeholder="كلمة المرور" required>
+      <button type="submit">دخول</button>
+    </form>
+    <div class="register-link">
+      ليس لديك حساب؟ <a href="/register/">سجل الآن</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل مستثمر جديد | شرفات للاستثمار</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Cairo", sans-serif;
+      background: linear-gradient(120deg, #0b1c39, #0f2f55);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .register-box {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 2.5rem 2rem;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease;
+    }
+
+    .register-box h1 {
+      color: #29b6f6;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .register-box input {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.6rem 0;
+      border: none;
+      border-radius: 8px;
+      background: #0f1b3d;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .register-box button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #29b6f6;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .register-box button:hover {
+      background: #1da0e0;
+    }
+
+    .register-box p {
+      margin-top: 1rem;
+      color: #aaa;
+    }
+
+    .register-box a {
+      color: #29b6f6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .error {
+      color: #ff6b6b;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h1>تسجيل مستثمر جديد</h1>
+
+    <form method="POST">
+      {% csrf_token %}
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+      <input type="text" name="username" placeholder="اسم المستخدم" required />
+      <input type="email" name="email" placeholder="البريد الإلكتروني" required />
+      <input type="password" name="password1" placeholder="كلمة المرور" required />
+      <input type="password" name="password2" placeholder="تأكيد كلمة المرور" required />
+      <button type="submit">تسجيل</button>
+    </form>
+
+    <p>لديك حساب؟ <a href="/login/">تسجيل الدخول</a></p>
+  </div>
+</body>
+</html>
